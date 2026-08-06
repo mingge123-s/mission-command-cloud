@@ -91,9 +91,9 @@ SSE；适合参谋长盯主攻。断线用 `Last-Event-ID` 恢复。过期后改
 
 ### 证据与保障类端点
 
-- **制成品（督察证据链）**：分队把截图、测试报告、日志写入工作区 `artifacts/` 目录；参谋长/督察用 `GET /v1/agents/{id}/artifacts` 列出，`GET /v1/agents/{id}/artifacts/download?path=...` 获取 15 分钟预签名 URL。战报中的 `EVIDENCE` 应优先引用 artifacts 路径而非口头声称。
-- **费用监控（J8）**：`GET /v1/agents/{id}/usage`（可按 `runId` 过滤）返回每个 run 的 token 用量；用于执行 OPORD 中的时间/费用上限。早期功能：未启用返回 `403 feature_unavailable`，降级为人工估计。
-- **归档/复员**：`POST /v1/agents/{id}/archive`（AAR 后经统帅批准归档，可 `unarchive` 召回）。归档后可读不可发令。
+- **制成品（督察证据链）**：分队把截图、测试报告、日志写入工作区 `artifacts/` 目录；参谋长/督察用 `GET /v1/agents/{id}/artifacts` 列出，`GET /v1/agents/{id}/artifacts/download?path=...` 获取 15 分钟预签名 URL（脚本：`scripts/artifacts.sh`）。战报中的 `EVIDENCE` 应优先引用 artifacts 路径而非口头声称。
+- **费用监控（J8）**：`GET /v1/agents/{id}/usage`（可按 `runId` 过滤）返回每个 run 的 token 用量；用于执行 OPORD 中的时间/费用上限（脚本：`scripts/usage.sh`）。早期功能：未启用返回 `403 feature_unavailable`，降级为人工估计。
+- **归档/复员**：`POST /v1/agents/{id}/archive`（AAR 后经统帅批准归档，可 `unarchive` 召回；脚本：`scripts/archive-agent.sh`）。归档后可读不可发令。
 - **能力自检**：`GET /v1/me` 验证 Key 有效性；`GET /v1/models` 获取可用模型 id（传给 `model.id`）。
 - `GET /v1/repositories`：限流极严（1 次/分钟），只在筹划期调一次并缓存。
 

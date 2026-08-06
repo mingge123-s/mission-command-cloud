@@ -168,3 +168,6 @@ EOF
 | `scripts/wait-run.sh` | 等待某次 run 终态并打印 result |
 | `scripts/list-runs.sh` | 列出某 agent 的历史 run（拉取兜底入口） |
 | `scripts/get-agent.sh` | 查询 agent 元数据 |
+| `scripts/artifacts.sh` | 列出/下载分队证据（artifacts） |
+| `scripts/usage.sh` | 查询 token 用量（J8 费用监控） |
+| `scripts/archive-agent.sh` | 归档/召回 agent（复员，需统帅批准） |
