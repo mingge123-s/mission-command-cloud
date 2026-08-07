@@ -13,8 +13,10 @@ case "$REPORT" in
 esac
 
 TEXT_JSON=$(printf '%s' "$REPORT" | json_escape)
+COS_SESSION_ID="$COS"
+BODY="$(prompt_body "$TEXT_JSON")"
 for i in 1 2 3 4 5; do
-  if oc_api POST "/session/${COS}/prompt_async" "{\"parts\":[{\"type\":\"text\",\"text\":${TEXT_JSON}}]}" >/dev/null; then
+  if oc_api POST "/session/${COS}/prompt_async" "$BODY" >/dev/null; then
     echo "report sent -> ${COS}"; exit 0
   fi
   sleep $((i * 5))

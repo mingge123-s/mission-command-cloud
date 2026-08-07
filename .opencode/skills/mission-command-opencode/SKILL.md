@@ -65,9 +65,10 @@ compatibility: 需要能访问本机 OpenCode Server API（默认 http://127.0.0
 
 ### 4. 创建分队会话
 
-使用 [scripts/create-unit.sh](scripts/create-unit.sh)：
+使用 [scripts/create-unit.sh](scripts/create-unit.sh)。**分队模型默认与参谋长一致**：创建前 `export COS_SESSION_ID=<本会话 ses_...>`，脚本会自动读取参谋长会话最近使用的模型下发给分队；如需为某分队指定别的模型，用 `OPENCODE_MODEL="provider/model"` 覆盖。
 
 ```bash
+export COS_SESSION_ID=ses_xxxxxxxx   # 模型继承依赖此变量
 scripts/create-unit.sh "[行动代号][分队] 成果名" <<'EOF'
 [MISSION-COMMAND ECHELON: TASK-UNIT]
 COS_SESSION_ID: ses_xxxxxxxx
@@ -175,7 +176,7 @@ EOF
 
 | 脚本 | 用途 |
 | --- | --- |
-| `scripts/create-unit.sh` | 创建分队/督察会话并下达 OPORD |
+| `scripts/create-unit.sh` | 创建分队/督察会话并下达 OPORD（模型默认继承参谋长，可用 OPENCODE_MODEL 覆盖） |
 | `scripts/send-prompt.sh` | 向指定会话发后续命令（FRAGORD） |
 | `scripts/report-to-cos.sh` | 分队向参谋长回报（带重试） |
 | `scripts/wait-idle.sh` | 等待会话本轮执行结束并打印最新回复 |
