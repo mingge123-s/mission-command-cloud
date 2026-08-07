@@ -4,6 +4,8 @@
 
 技能本体：[`.cursor/skills/mission-command-cloud/`](.cursor/skills/mission-command-cloud/)（入口 [SKILL.md](.cursor/skills/mission-command-cloud/SKILL.md)）。
 
+OpenCode 移植版：[`.opencode/skills/mission-command-opencode/`](.opencode/skills/mission-command-opencode/)，基于 OpenCode 本机 Server API（分队 = 独立 OpenCode 会话），复制到 OpenCode 的 skills 目录（如 `~/.config/opencode/skills/` 或项目 `.opencode/skills/`）即可使用。
+
 ## 安装
 
 **方式一：项目级**（仅当前仓库可用）
